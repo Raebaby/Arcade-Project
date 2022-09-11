@@ -1,9 +1,9 @@
 body {
     display: flex;
+    flex-flow: column;
+    column-gap: 20vh;
     align-items: center;
-    justify-content: space-around;
-    flex-direction: column;
-    background-color: rgb(171, 170, 236); 
+    background-color: #abaaec; 
     overflow: hidden;
 }
 
