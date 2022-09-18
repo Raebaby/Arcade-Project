@@ -1,31 +1,101 @@
 body {
     display: flex;
-    flex-flow: column;
-    column-gap: 20vh;
     align-items: center;
-    background-color: #abaaec; 
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-between;
+    background-color: black; 
     overflow: hidden;
+    overflow: scroll;
 }
 
 .title {
-    color: azure;
+    display: flex;
+    justify-content: center;
+    font-family: 'Bungee Spice', cursive;
+    font-size: 12vh;
 }
 
-.opponents {
-    color: brown;
+.greeting {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    font-size: 3vh;
+    color: orange;
 }
 
 /* Table */
 
-td {
-    background-color: white;
-    height: 20vh;
-    width: 20vh;
+.board {
+    display: grid;
+    grid-template-columns: 25vh 25vh 25vh ;
+    grid-template-rows: 25vh 25vh 25vh;  
+    color: rgb(171, 96, 10);
+    justify-content: center;
 }
 
-/* Input Feild - Player name submissions */
-
-.names{
+.tile {
+    height: 25vh;
+    width: 25vh;
+    margin: 40px;
+    font-size: 10vh;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-border {
+    border-right: solid yellow;
+}
+
+.bottom-border {
+    border-bottom: solid yellow;
+}
+
+.strike {
+    position: absolute;
+    background-color: white;
+}
+
+.strike-row-1 {
+    width: 100%;
+    height: 4px;
+    top: 15%;
+}
+
+
+/* Input Feild - Player name submissions */
+.nameform {
+    display:block;
+    justify-content: center;
+}
+
+.names {
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    color: yellow;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+#submitbutton {
+    display:block;
+    height: 55px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: rgb(171, 80, 10);
+    color: yellow;
+}
+
+#restartButton {
+    display:block;
+    height: 55px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: rgb(171, 80, 10);
+    color: yellow;
 }

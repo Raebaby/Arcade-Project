@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script defer src="app.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <!-- Instructions 
@@ -28,63 +31,69 @@ set the board size myself ("wider" or "taller" than 3x3)
 
 -->
 <body>
-
+<br>
+<br>
 <!-- Header -->
-
-        <div class="title">
-            Tic Tac Toe
-        </div>
-        <div class="opponents">
-            <span class="op1">
-                Opponent 1:
-            </span>
-            <span class="op2">
-                Opponent 2:
-            </span>
-        </div>
-
+    
+            <div class="title">
+                Tic Tac Toe
+            </div>
+            <br>
+            <div class ='winningmessage'>
+            <div>
+            <br>
+            <div class="greeting">
+                <span id = 'playerX'>
+                </span>
+                <span id = 'playerO'>
+                </span>
+            </div>
+    <br>
 <!-- Table -->
-<div>
-    <table>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
-</div>
+    <div class="board">
+        <div data-index="1" class="tile right-border bottom-border">X</div>
+        <div data-index="2" class="tile right-border bottom-border">X</div>
+        <div data-index="3" class="tile bottom-border">X</div>
+        <div data-index="4" class="tile right-border bottom-border">X</div>
+        <div data-index="5" class="tile right-border bottom-border">X</div>
+        <div data-index="6" class="tile bottom-border">X</div>
+        <div data-index="7" class="tile right-border ">X</div>
+        <div data-index="8" class="tile right-border ">X</div>
+        <div data-index="9" class="tile">X</div>
+        <div id='strike' class="stirke strike-row-1"></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 <!-- Input Feild - Player name submissions-->
+
+    <form class="nameform">
+        <div class="names">
+            <span >
+                <label>Player One:</label>
+                <input type="text" id="player1name">
+            </span>
+            <span>  
+                        <label>Player Two:</label>
+                        <input type="text" id="player2name">
+            </span>        
+        </div>
+    <br>
+        <div class="button">
+                <button type="button" id="submitbutton" >Submit</button>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+                <button type ="button" id ="restartButton">Restart</button>
+       </div>
+    <form>
 <br>
 <br>
-<form class="nameform">
-    <div class="names">
-        <span >
-            <label>Player One:</label>
-            <input type="text" id="player1name">
-
-        </span>
-        <span>  
-                    <label>Player Two:</label>
-                    <input type="text" id="player2name">
-        </span>        
-    </div>
-    <div>
-            <button type="button" id="submitButton">Submit</button>
-    </div>
-<form>
 
 
-
+       
+ 
 
 </body>
 </html>
