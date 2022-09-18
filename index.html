@@ -39,28 +39,32 @@ set the board size myself ("wider" or "taller" than 3x3)
                 Tic Tac Toe
             </div>
             <br>
-            <div class ='winningmessage'>
-            <div>
+                <div class="gameovermessage hidden">  
+                        <h2 id="game-over-text">Winner is X</h2>
+                        <button type ="button" id ="restartButton">Play Again</button>
+                </div>
             <br>
             <div class="greeting">
                 <span id = 'playerX'>
                 </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span id = 'playerO'>
                 </span>
             </div>
     <br>
+    <br>
 <!-- Table -->
     <div class="board">
-        <div data-index="1" class="tile right-border bottom-border">X</div>
-        <div data-index="2" class="tile right-border bottom-border">X</div>
-        <div data-index="3" class="tile bottom-border">X</div>
-        <div data-index="4" class="tile right-border bottom-border">X</div>
-        <div data-index="5" class="tile right-border bottom-border">X</div>
-        <div data-index="6" class="tile bottom-border">X</div>
-        <div data-index="7" class="tile right-border ">X</div>
-        <div data-index="8" class="tile right-border ">X</div>
-        <div data-index="9" class="tile">X</div>
-        <div id='strike' class="stirke strike-row-1"></div>
+        <div data-index="1" class="tile right-border bottom-border"></div>
+        <div data-index="2" class="tile right-border bottom-border"></div>
+        <div data-index="3" class="tile bottom-border"></div>
+        <div data-index="4" class="tile right-border bottom-border"></div>
+        <div data-index="5" class="tile right-border bottom-border"></div>
+        <div data-index="6" class="tile bottom-border"></div>
+        <div data-index="7" class="tile right-border "></div>
+        <div data-index="8" class="tile right-border "></div>
+        <div data-index="9" class="tile"></div>
+        <div class="strike"></div>
     </div>
     <br>
     <br>
@@ -76,6 +80,7 @@ set the board size myself ("wider" or "taller" than 3x3)
                 <label>Player One:</label>
                 <input type="text" id="player1name">
             </span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <span>  
                         <label>Player Two:</label>
                         <input type="text" id="player2name">
@@ -84,8 +89,7 @@ set the board size myself ("wider" or "taller" than 3x3)
     <br>
         <div class="button">
                 <button type="button" id="submitbutton" >Submit</button>
-                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
-                <button type ="button" id ="restartButton">Restart</button>
+                
        </div>
     <form>
 <br>

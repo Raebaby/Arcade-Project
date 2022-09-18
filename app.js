@@ -16,16 +16,20 @@ document.getElementById('submitbutton').onclick = function (){
         playerO.innerHTML = `Player O: ${opponent2}`}
 }
 
-let player_x = 'X';
+const tiles = document.querySelectorAll('.tile');
+
+let Player_x = 'X';
 let Player_O = 'O';
-let gameState = {
-    players: ['x', 'o'],
-    board: [
-      [null, null, null],
-      [null, null, null],
-      [null, null, null]
-    ]
-  }
+let turn = Player_x;
+
+const gameState = Array(tiles.length);
+gameState.fill(null);
+
+//Elements
+const strike = document.getElementById('strike')
+const gameOverMessage = document.getElementByClass('gameovermessage')
+const gameOverText = document.getElementById('game-over-text')
+const playAgain = document.getElementById('restartButton')
 /*
 function buildInitialState() {
 
