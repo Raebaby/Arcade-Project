@@ -1,66 +1,134 @@
-/*- enter our names and have them displayed*/
-
-document.getElementById('submitbutton').onclick = function (){
-    const opponent1 = document.getElementById('player1name').value;
-    const opponent2 = document.getElementById('player2name').value;
-    let playerX = document.querySelector('#playerX');
-    let playerO = document.querySelector('#playerO');
-        if (opponent1 === ''){
-        playerX.innerHTML = `Player X : Computer`
-        playerO.innerHTML = `Player O: ${opponent2}`}
-        else if (opponent2 === ''){
-        playerX.innerHTML = `Player X : ${opponent1}`
-        playerO.innerHTML = `Player O: Computer`}
-        else {
-        playerX.innerHTML = `Player X : ${opponent1}`
-        playerO.innerHTML = `Player O: ${opponent2}`}
-}
-
-const tiles = document.querySelectorAll('.tile');
-
-let Player_x = 'X';
-let Player_O = 'O';
-let turn = Player_x;
+const tiles = document.querySelectorAll(".tile");
+const player_X = "X";
+const player_O = "O";
+let turn = player_X;
 
 const gameState = Array(tiles.length);
 gameState.fill(null);
 
+//Hover Feature
+
+function setHoverText (){
+  tiles.forEach((tile) => {
+    tile.classList.remove("x-hover");
+    tile.classList.remove("o-hover");
+  });
+
+  const hoverClass = `${turn.toLowerCase()}-hover`;
+
+  tiles.forEach((tile) => {
+    if (tile.innerText == "") {
+      tile.classList.add(hoverClass);
+    }
+  });
+}
+setHoverText();
+
 //Elements
-const strike = document.getElementById('strike')
-const gameOverMessage = document.getElementByClass('gameovermessage')
-const gameOverText = document.getElementById('game-over-text')
-const playAgain = document.getElementById('restartButton')
-/*
-function buildInitialState() {
+const strike = document.getElementsByClassName("strike");
+const gameOverArea = document.querySelector(".gameovermessage");
+const gameOverText = document.querySelector(".game-over-text");
+const playAgain = document.getElementById("restartButton");
 
-}
+tiles.forEach((tile) => tile.addEventListener("click",onBoardClick));
 
-// render
-function renderState() {
-
-}
-
-// add to above
-function tick() {
-    // this is an incremental change that happens to the state every time you update...
-  
-    renderState()
+function onBoardClick(event) {
+  if (gameOverArea.classList === "visible") {
+    return;
   }
-  
-  setInterval(tick, 1000 / 30) // as close to 30 frames per second as possible
-  
-  // now you might have things like
-  document.addEventListener('keydown', function (event) {
-    // here you might read which key was pressed and update the state accordingly
-  })
 
-// maybe a dozen or so helper functions for tiny pieces of the interface
+  const tile = event.target;
+  const tileNumber = tile.dataset.index;
+  if (tile.innerText != "") {
+    return;
+  }
 
-// listeners
-function onBoardClick() {
-  // update state, maybe with another dozen or so helper functions...
+  if(turn === player_X){
+    tile.innerText = player_X
+    gameState[tileNumber - 1] = player_X;
+    turn = player_O
+  }
+   
+  else {turn === player_O
+      tile.innerText = player_O;
+      gameState[tileNumber - 1] = player_O;
+      turn = player_X;
+  }
 
-  renderState() // show the user the new state
+  setHoverText();
+  checkWinner();
 }
-const board = document.getElementById('board');
-board.addEventListener('click', onBoardClick); // etc */
+
+
+//Checking If there is a winner
+
+const winningPlays = [
+  { combo: [1, 2, 3], strikeClass: "strike-row-1" },
+  { combo: [4, 5, 6], strikeClass: "strike-row-2" },
+  { combo: [7, 8, 9], strikeClass: "strike-row-3" }, 
+  { combo: [1, 4, 7], strikeClass: "strike-column-1" },
+  { combo: [2, 5, 8], strikeClass: "strike-column-2" },
+  { combo: [3, 6, 9], strikeClass: "strike-column-3" },
+  { combo: [1, 5, 9], strikeClass: "strike-diagonal-1" },
+  { combo: [3, 5, 7], strikeClass: "strike-diagonal-2" },
+    ];
+
+function checkWinner(){
+    for (const winningPlay of winningPlays){
+        const {combo, strikeClass } = winningPlay;
+        const tileValue1 = gameState[combo[0] - 1];
+        const tileValue2 = gameState[combo[1] - 1];
+        const tileValue3 = gameState[combo[2] - 1];
+        
+    if(tileValue1 !== null && tileValue1 === tileValue2 && tileValue1 === tileValue3){
+          endGame(false)
+          return;
+    }
+    else if (isDraw()) {
+      endGame(true)
+    }
+    else{
+    setHoverText();
+    checkWinner();}
+  }
+      
+ }
+
+//Draw 
+function isDraw() {
+  return [gameState].every(cell => {
+    return cell.classList.contains(player_X) || cell.classList.contains(player_O)
+  })
+}
+
+function endGame(draw) {
+  if (draw) {
+      gameOverText.innerText = "Draw!"
+    }
+  if (turn === player_X){
+    gameOverText.innerText = "O's Win!"
+  }
+  if (turn === player_O){
+    gameOverText.innerText = "X's Win!"
+  }
+  gameOverArea.classList.add('visible')
+}
+
+
+
+//Displaying Names at the top of the Page
+document.getElementById('submitbutton').onclick = function (){
+  const opponent1 = document.getElementById('player1name').value;
+  const opponent2 = document.getElementById('player2name').value;
+  let playerX = document.querySelector('#playerX');
+  let playerO = document.querySelector('#playerO');
+      if (opponent1 === ''){
+          playerX.innerHTML = `Player X : Computer`
+          playerO.innerHTML = `Player O: ${opponent2}`}
+      else if (opponent2 === ''){
+          playerX.innerHTML = `Player X : ${opponent1}`
+          playerO.innerHTML = `Player O: Computer`}
+      else {
+          playerX.innerHTML = `Player X : ${opponent1}`
+          playerO.innerHTML = `Player O: ${opponent2}`}
+        }
