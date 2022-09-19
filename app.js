@@ -60,7 +60,22 @@ function onBoardClick(event) {
 }
 
 
-//Checking If there is a winner
+//Checking If there is a winner or Draw
+
+//Draw 
+function endGame(draw){
+  const allTileFilledIn = gameState.every((tile) => tile !== null);
+  if (allTileFilledIn) {
+    gameOverText.innerText = "Draw!";}
+  
+  else if (turn === player_X){
+      gameOverText.innerText = "O's Win!"
+    }
+  else if (turn === player_O){
+      gameOverText.innerText = "X's Win!"
+    }
+    gameOverArea.classList.add('visible')
+  }
 
 const winningPlays = [
   { combo: [1, 2, 3], strikeClass: "strike-row-1" },
@@ -81,40 +96,12 @@ function checkWinner(){
         const tileValue3 = gameState[combo[2] - 1];
         
     if(tileValue1 !== null && tileValue1 === tileValue2 && tileValue1 === tileValue3){
-          endGame(false)
+          endGame(tileValue1)
           return;
-    }
-    else if (isDraw()) {
-      endGame(true)
-    }
-    else{
-    setHoverText();
-    checkWinner();}
   }
       
  }
-
-//Draw 
-function isDraw() {
-  return [gameState].every(cell => {
-    return cell.classList.contains(player_X) || cell.classList.contains(player_O)
-  })
 }
-
-function endGame(draw) {
-  if (draw) {
-      gameOverText.innerText = "Draw!"
-    }
-  if (turn === player_X){
-    gameOverText.innerText = "O's Win!"
-  }
-  if (turn === player_O){
-    gameOverText.innerText = "X's Win!"
-  }
-  gameOverArea.classList.add('visible')
-}
-
-
 
 //Displaying Names at the top of the Page
 document.getElementById('submitbutton').onclick = function (){
